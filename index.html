@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!-- Code assistance acknowledgement: OpenAI Codex was used to help rebuild this original page from the prompt "Restart the Big Planetarium website from the beginning with a stylish accessible design." -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Big Planetarium, an accessible educational website about the Milky Way and the planets.">
+    <title>Big Planetarium | Milky Way Observatory</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header">
+        <nav class="nav-shell" aria-label="Main navigation">
+            <a class="brand" href="index.html" aria-label="Big Planetarium home">
+                <span class="brand-mark" aria-hidden="true">BP</span>
+                <span>Big Planetarium</span>
+            </a>
+
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
+
+            <ul class="site-menu" id="site-menu">
+                <li><a href="index.html" aria-current="page">Milky Way</a></li>
+                <li><a href="planets.html">Planet Atlas</a></li>
+                <li><a href="mars.html">Mars Mission</a></li>
+            </ul>
+
+            <button class="mode-toggle" type="button" aria-pressed="false">High contrast</button>
+        </nav>
+    </header>
+
+    <main id="main" tabindex="-1">
+        <section class="hero" aria-labelledby="page-title">
+            <img class="hero-media" src="assets/images/hero-space.png" alt="A colourful deep space scene filled with stars, nebula clouds, and distant planets.">
+            <div class="hero-copy">
+                <p class="kicker">Bristol space learning</p>
+                <h1 id="page-title">Big Planetarium</h1>
+                <p class="hero-lede">A clear, cinematic guide to the Milky Way, built for curious visitors, school groups, keyboard users, and anyone who wants space to feel within reach.</p>
+                <div class="hero-actions" aria-label="Primary actions">
+                    <a class="button" href="planets.html">Open the atlas</a>
+                    <a class="button button-quiet" href="mars.html">Visit Mars</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="overview-band" aria-labelledby="overview-title">
+            <div class="section-wrap overview-grid">
+                <div>
+                    <p class="kicker">The galaxy around us</p>
+                    <h2 id="overview-title">The Milky Way is our island of stars</h2>
+                    <p>The Milky Way is a barred spiral galaxy containing our Solar System, clouds of gas and dust, star-forming nebulae, and billions of stars. From Earth, its crowded disc can appear as a pale river of light across a dark sky.</p>
+                </div>
+                <dl class="stat-strip" aria-label="Milky Way facts">
+                    <div>
+                        <dt>Shape</dt>
+                        <dd>Barred spiral</dd>
+                    </div>
+                    <div>
+                        <dt>Solar address</dt>
+                        <dd>Orion Arm</dd>
+                    </div>
+                    <div>
+                        <dt>Learning focus</dt>
+                        <dd>Clear access</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <section class="section-wrap observatory" aria-labelledby="observatory-title">
+            <div class="section-heading">
+                <p class="kicker">Interactive media</p>
+                <h2 id="observatory-title">Solar System motion board</h2>
+                <p>The model is simplified for learning, with labelled planets and controls for motion.</p>
+            </div>
+
+            <div class="observatory-grid">
+                <canvas id="orbit-canvas" width="900" height="520" role="img" aria-label="A simplified animated model showing planets moving around the Sun.">
+                    Simplified Solar System model with Mercury, Earth, Mars, Jupiter, and Saturn orbiting the Sun.
+                </canvas>
+
+                <form class="control-panel" aria-label="Orbit model controls">
+                    <button class="button button-full" id="motion-toggle" type="button" aria-pressed="false">Pause motion</button>
+                    <label for="orbit-speed">Orbit speed</label>
+                    <input id="orbit-speed" type="range" min="1" max="7" value="3">
+                    <p class="status" id="orbit-status" aria-live="polite">Motion active at steady speed.</p>
+                </form>
+            </div>
+        </section>
+
+        <section class="section-wrap visit-grid" aria-labelledby="visit-title">
+            <div class="section-heading">
+                <p class="kicker">Visit route</p>
+                <h2 id="visit-title">Three linked stops for the prototype</h2>
+            </div>
+
+            <article class="visit-card">
+                <span class="card-number">01</span>
+                <h3>Milky Way</h3>
+                <p>The landing page introduces the galaxy and sets the visual identity for Big Planetarium.</p>
+                <a href="index.html" aria-current="page">Current stop</a>
+            </article>
+
+            <article class="visit-card">
+                <span class="card-number">02</span>
+                <h3>Planet Atlas</h3>
+                <p>The atlas compares all eight planets with local images and keyboard-friendly controls.</p>
+                <a href="planets.html">Explore planets</a>
+            </article>
+
+            <article class="visit-card">
+                <span class="card-number">03</span>
+                <h3>Mars Mission</h3>
+                <p>The dedicated planet page focuses on Mars facts, mission themes, and a short quiz.</p>
+                <a href="mars.html">Enter mission</a>
+            </article>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Big Planetarium prototype. Designed for accessible public science learning.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

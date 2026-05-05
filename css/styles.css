@@ -1,0 +1,834 @@
+/* Code assistance acknowledgement: OpenAI Codex was used to draft and refine this original stylesheet from the prompt "Restart the Big Planetarium website from the beginning with a stylish accessible design." */
+:root {
+    --ink: #081016;
+    --ink-2: #111827;
+    --paper: #fff8ed;
+    --text: #f9fbff;
+    --muted: #c9d6df;
+    --line: rgba(255, 248, 237, 0.18);
+    --panel: rgba(11, 20, 31, 0.84);
+    --panel-strong: #142536;
+    --gold: #ffd36e;
+    --coral: #ff7a59;
+    --aqua: #70e0d2;
+    --rose: #f06c9b;
+    --focus: #9ffcdf;
+    --shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    color: var(--text);
+    background:
+        linear-gradient(180deg, #081016 0%, #101521 38%, #190f20 70%, #081016 100%);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.65;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image:
+        radial-gradient(circle, rgba(255, 255, 255, 0.78) 0 1px, transparent 1.4px),
+        radial-gradient(circle, rgba(112, 224, 210, 0.72) 0 1px, transparent 1.6px);
+    background-position: 0 0, 46px 38px;
+    background-size: 120px 120px, 190px 190px;
+    opacity: 0.22;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+main:focus-visible {
+    outline: 4px solid var(--focus);
+    outline-offset: 4px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.skip-link {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    z-index: 20;
+    transform: translateY(-150%);
+    padding: 0.75rem 1rem;
+    background: var(--gold);
+    color: #111827;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+/* Header controls are shared by all pages for consistent navigation. */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(8, 16, 22, 0.88);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(18px);
+}
+
+.nav-shell {
+    width: min(1180px, calc(100% - 2rem));
+    min-height: 76px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-right: auto;
+    color: var(--paper);
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.brand-mark {
+    display: inline-grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    border: 1px solid rgba(255, 211, 110, 0.65);
+    border-radius: 0.35rem;
+    background: linear-gradient(135deg, rgba(255, 211, 110, 0.95), rgba(240, 108, 155, 0.88));
+    color: #111827;
+}
+
+.site-menu {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-menu a,
+.mode-toggle {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.35rem;
+    font: inherit;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.site-menu a {
+    padding: 0.68rem 0.9rem;
+    color: var(--muted);
+}
+
+.site-menu a:hover,
+.site-menu a[aria-current="page"] {
+    color: var(--paper);
+    background: rgba(255, 248, 237, 0.1);
+}
+
+.mode-toggle {
+    border: 1px solid rgba(255, 248, 237, 0.28);
+    padding: 0.64rem 0.9rem;
+    background: transparent;
+    color: var(--paper);
+    cursor: pointer;
+}
+
+.mode-toggle[aria-pressed="true"] {
+    background: var(--paper);
+    color: var(--ink);
+}
+
+.nav-toggle {
+    display: none;
+    width: 46px;
+    height: 46px;
+    border: 1px solid rgba(255, 248, 237, 0.35);
+    border-radius: 0.35rem;
+    background: transparent;
+    color: var(--paper);
+    cursor: pointer;
+}
+
+.nav-toggle span:not(.sr-only) {
+    display: block;
+    width: 23px;
+    height: 2px;
+    margin: 5px auto;
+    background: currentColor;
+}
+
+.hero {
+    position: relative;
+    min-height: 84svh;
+    display: grid;
+    align-items: end;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(8, 16, 22, 0.94) 0%, rgba(8, 16, 22, 0.72) 42%, rgba(8, 16, 22, 0.08) 100%),
+        linear-gradient(0deg, rgba(8, 16, 22, 0.95) 0%, rgba(8, 16, 22, 0.08) 35%);
+}
+
+.hero-media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-copy {
+    position: relative;
+    z-index: 1;
+    width: min(1180px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 7rem 0 7.5rem;
+}
+
+.kicker {
+    margin: 0 0 0.75rem;
+    color: var(--gold);
+    font-size: 0.82rem;
+    font-weight: 900;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+    overflow-wrap: anywhere;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    line-height: 1.05;
+}
+
+.hero h1 {
+    max-width: 760px;
+    color: var(--paper);
+    font-size: 4.8rem;
+}
+
+.hero-lede,
+.page-hero p,
+.mission-hero p,
+.section-heading p,
+.overview-grid p,
+.quiz-layout p {
+    max-width: 700px;
+    color: var(--muted);
+    font-size: 1.1rem;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-top: 1.5rem;
+}
+
+.button,
+.chip,
+.planet-tile {
+    min-height: 44px;
+    border: 0;
+    border-radius: 0.42rem;
+    font: inherit;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.82rem 1.05rem;
+    background: linear-gradient(135deg, var(--gold), var(--coral));
+    color: #111827;
+    text-decoration: none;
+    box-shadow: 0 16px 34px rgba(255, 122, 89, 0.22);
+}
+
+.button:hover {
+    transform: translateY(-1px);
+}
+
+.button-quiet {
+    background: rgba(255, 248, 237, 0.12);
+    color: var(--paper);
+    border: 1px solid rgba(255, 248, 237, 0.28);
+    box-shadow: none;
+}
+
+.button-full {
+    width: 100%;
+}
+
+.section-wrap {
+    width: min(1180px, calc(100% - 2rem));
+    margin: 0 auto;
+}
+
+.overview-band {
+    padding: 4.5rem 0;
+    background: linear-gradient(90deg, rgba(255, 248, 237, 0.06), rgba(112, 224, 210, 0.08), rgba(255, 122, 89, 0.07));
+    border-bottom: 1px solid var(--line);
+}
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.78fr);
+    gap: 2rem;
+    align-items: center;
+}
+
+.overview-grid h2,
+.section-heading h2,
+.page-hero h1,
+.mission-hero h1,
+.quiz-layout h2 {
+    max-width: 760px;
+    color: var(--paper);
+    font-size: 3rem;
+}
+
+.stat-strip,
+.control-panel,
+.planet-feature,
+.quiz-card,
+.visit-card,
+.mission-notes article {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    box-shadow: var(--shadow);
+}
+
+.stat-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0;
+}
+
+.stat-strip div {
+    min-height: 150px;
+    padding: 1.25rem;
+    border-right: 1px solid var(--line);
+}
+
+.stat-strip div:last-child {
+    border-right: 0;
+}
+
+.stat-strip dt {
+    color: var(--aqua);
+    font-size: 0.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.stat-strip dd {
+    margin: 0.55rem 0 0;
+    color: var(--paper);
+    font-size: 1.25rem;
+    font-weight: 900;
+}
+
+.observatory {
+    padding: 5rem 0;
+}
+
+.section-heading {
+    margin-bottom: 1.4rem;
+}
+
+.observatory-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+#orbit-canvas {
+    width: 100%;
+    aspect-ratio: 45 / 26;
+    height: auto;
+    border: 1px solid var(--line);
+    border-radius: 0.6rem;
+    background: #050b11;
+    box-shadow: var(--shadow);
+}
+
+.control-panel {
+    display: grid;
+    align-content: center;
+    gap: 0.9rem;
+    padding: 1.25rem;
+    border-radius: 0.6rem;
+}
+
+.control-panel label {
+    color: var(--paper);
+    font-weight: 900;
+}
+
+.control-panel input {
+    width: 100%;
+}
+
+.status {
+    min-height: 1.5rem;
+    margin: 0;
+    color: var(--muted);
+}
+
+.visit-grid,
+.mission-notes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 5rem 0;
+}
+
+.visit-grid .section-heading,
+.mission-notes .section-heading {
+    grid-column: 1 / -1;
+}
+
+.visit-card,
+.mission-notes article {
+    min-height: 250px;
+    padding: 1.35rem;
+    border-radius: 0.6rem;
+}
+
+.visit-card h3,
+.mission-notes h3 {
+    margin-top: 0.8rem;
+    color: var(--paper);
+    font-size: 1.45rem;
+}
+
+.visit-card p,
+.mission-notes p {
+    color: var(--muted);
+}
+
+.visit-card a {
+    color: var(--gold);
+    font-weight: 900;
+}
+
+.card-number {
+    color: var(--aqua);
+    font-weight: 900;
+}
+
+.page-main {
+    background: linear-gradient(180deg, rgba(255, 248, 237, 0.04), transparent 36rem);
+}
+
+.page-hero,
+.mission-hero {
+    padding: 5rem 0 3rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.page-hero-grid,
+.mission-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.72fr);
+    gap: 2rem;
+    align-items: center;
+}
+
+.page-hero img {
+    width: min(420px, 100%);
+    justify-self: center;
+    filter: drop-shadow(0 24px 42px rgba(0, 0, 0, 0.42));
+}
+
+.atlas-layout {
+    display: grid;
+    grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1fr);
+    gap: 1.25rem;
+    padding: 4rem 0 5rem;
+    align-items: start;
+}
+
+.atlas-tools h2 {
+    margin-bottom: 1rem;
+    color: var(--paper);
+    font-size: 2rem;
+}
+
+.filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.chip {
+    padding: 0.65rem 0.85rem;
+    border: 1px solid var(--line);
+    background: rgba(255, 248, 237, 0.08);
+    color: var(--paper);
+}
+
+.chip.is-active {
+    background: var(--paper);
+    color: var(--ink);
+}
+
+.planet-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.planet-tile {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr);
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 78px;
+    padding: 0.65rem;
+    border: 1px solid var(--line);
+    background: rgba(255, 248, 237, 0.06);
+    color: var(--paper);
+    text-align: left;
+}
+
+.planet-tile img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+}
+
+.planet-tile.is-selected {
+    border-color: rgba(255, 211, 110, 0.9);
+    background: rgba(255, 211, 110, 0.14);
+}
+
+.planet-tile[hidden] {
+    display: none;
+}
+
+.planet-feature {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.76fr) minmax(0, 1fr);
+    gap: 1.5rem;
+    min-height: 560px;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+}
+
+.planet-image-frame {
+    display: grid;
+    place-items: center;
+    border-radius: 0.55rem;
+    background: linear-gradient(180deg, rgba(112, 224, 210, 0.12), rgba(240, 108, 155, 0.09));
+}
+
+.planet-image-frame img {
+    max-height: 390px;
+    object-fit: contain;
+    filter: drop-shadow(0 28px 36px rgba(0, 0, 0, 0.48));
+}
+
+.planet-copy {
+    align-self: center;
+}
+
+.planet-copy h2 {
+    color: var(--paper);
+    font-size: 3.2rem;
+}
+
+.planet-copy p {
+    color: var(--muted);
+}
+
+.detail-list {
+    margin: 1rem 0 1.25rem;
+}
+
+.detail-list div {
+    padding: 0.8rem 0;
+    border-top: 1px solid var(--line);
+}
+
+.detail-list dt {
+    color: var(--aqua);
+    font-weight: 900;
+}
+
+.detail-list dd {
+    margin: 0.2rem 0 0;
+    color: var(--paper);
+}
+
+.mission-hero {
+    background: linear-gradient(135deg, rgba(255, 122, 89, 0.16), rgba(112, 224, 210, 0.06));
+}
+
+.mission-grid {
+    min-height: 520px;
+}
+
+.mars-orb {
+    display: grid;
+    place-items: center;
+}
+
+.mars-orb img {
+    width: min(430px, 100%);
+    filter: drop-shadow(0 28px 42px rgba(0, 0, 0, 0.5));
+}
+
+.quiz-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(300px, 1fr);
+    gap: 1.5rem;
+    padding: 0 0 5rem;
+    align-items: start;
+}
+
+.quiz-card {
+    padding: 1.5rem;
+    border-radius: 0.65rem;
+}
+
+fieldset {
+    display: grid;
+    gap: 0.8rem;
+    margin: 0 0 1rem;
+    padding: 0;
+    border: 0;
+}
+
+legend {
+    margin-bottom: 0.8rem;
+    color: var(--paper);
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+label {
+    display: flex;
+    gap: 0.65rem;
+    align-items: flex-start;
+    color: var(--muted);
+}
+
+label input {
+    margin-top: 0.35rem;
+}
+
+.site-footer {
+    padding: 2rem 1rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    text-align: center;
+}
+
+body.high-contrast {
+    --ink: #000000;
+    --ink-2: #000000;
+    --paper: #ffffff;
+    --text: #ffffff;
+    --muted: #ffffff;
+    --line: #ffffff;
+    --panel: #000000;
+    --panel-strong: #000000;
+    --gold: #ffff00;
+    --coral: #ffffff;
+    --aqua: #00ffff;
+    --rose: #ffffff;
+    --focus: #00ffff;
+    background: #000000;
+}
+
+body.high-contrast .hero::after,
+body.high-contrast .overview-band,
+body.high-contrast .mission-hero {
+    background: rgba(0, 0, 0, 0.72);
+}
+
+body.high-contrast .button,
+body.high-contrast .chip.is-active {
+    border: 2px solid #ffffff;
+    background: #ffff00;
+    color: #000000;
+}
+
+@media (max-width: 900px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .site-menu {
+        position: absolute;
+        left: 1rem;
+        right: 1rem;
+        top: 76px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.75rem;
+        border: 1px solid var(--line);
+        border-radius: 0.5rem;
+        background: var(--panel-strong);
+    }
+
+    .site-menu.is-open {
+        display: flex;
+    }
+
+    .mode-toggle {
+        margin-left: 0;
+    }
+
+    .hero h1 {
+        font-size: 3.4rem;
+    }
+
+    .overview-grid,
+    .observatory-grid,
+    .page-hero-grid,
+    .mission-grid,
+    .atlas-layout,
+    .planet-feature,
+    .quiz-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .visit-grid,
+    .mission-notes {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-strip {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-strip div {
+        min-height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .stat-strip div:last-child {
+        border-bottom: 0;
+    }
+}
+
+@media (max-width: 560px) {
+    .nav-shell {
+        width: min(100% - 1rem, 1180px);
+        gap: 0.5rem;
+    }
+
+    .brand span:last-child {
+        display: none;
+    }
+
+    .hero {
+        min-height: 78svh;
+    }
+
+    .hero-copy {
+        padding: 4.5rem 0 5rem;
+    }
+
+    .hero h1,
+    .page-hero h1,
+    .mission-hero h1,
+    .overview-grid h2,
+    .section-heading h2,
+    .quiz-layout h2,
+    .planet-copy h2 {
+        font-size: 2.45rem;
+    }
+
+    .planet-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+    }
+}
+
+@media (forced-colors: active) {
+    .button,
+    .chip,
+    .planet-tile,
+    .mode-toggle,
+    .nav-toggle,
+    .site-menu a {
+        border: 1px solid ButtonText;
+    }
+
+    .hero::after {
+        background: Canvas;
+    }
+}

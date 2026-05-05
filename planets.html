@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!-- Code assistance acknowledgement: OpenAI Codex was used to help rebuild this original page from the prompt "Restart the Big Planetarium website from the beginning with a stylish accessible design." -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Accessible interactive atlas for comparing the eight planets in the Solar System.">
+    <title>Big Planetarium | Planet Atlas</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header">
+        <nav class="nav-shell" aria-label="Main navigation">
+            <a class="brand" href="index.html" aria-label="Big Planetarium home">
+                <span class="brand-mark" aria-hidden="true">BP</span>
+                <span>Big Planetarium</span>
+            </a>
+
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
+
+            <ul class="site-menu" id="site-menu">
+                <li><a href="index.html">Milky Way</a></li>
+                <li><a href="planets.html" aria-current="page">Planet Atlas</a></li>
+                <li><a href="mars.html">Mars Mission</a></li>
+            </ul>
+
+            <button class="mode-toggle" type="button" aria-pressed="false">High contrast</button>
+        </nav>
+    </header>
+
+    <main id="main" class="page-main" tabindex="-1">
+        <section class="page-hero atlas-hero" aria-labelledby="page-title">
+            <div class="section-wrap page-hero-grid">
+                <div>
+                    <p class="kicker">Planet Atlas</p>
+                    <h1 id="page-title">Eight worlds, one shared star</h1>
+                    <p>Compare the Solar System through short facts, strong visual cues, and controls that work with touch, mouse, or keyboard.</p>
+                </div>
+                <img src="assets/images/saturn.png" alt="Illustration of Saturn with bright rings and pale golden bands.">
+            </div>
+        </section>
+
+        <section class="section-wrap atlas-layout" aria-labelledby="atlas-title">
+            <div class="atlas-tools">
+                <h2 id="atlas-title">Choose a world</h2>
+                <div class="filter-group" role="group" aria-label="Filter planets by type">
+                    <button class="chip is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+                    <button class="chip" type="button" data-filter="rocky" aria-pressed="false">Rocky</button>
+                    <button class="chip" type="button" data-filter="giant" aria-pressed="false">Giants</button>
+                    <button class="chip" type="button" data-filter="ice" aria-pressed="false">Ice giants</button>
+                </div>
+                <div class="planet-grid" role="list" aria-label="Planet choices">
+                    <button class="planet-tile" type="button" data-planet="mercury" data-kind="rocky" aria-pressed="false">
+                        <img src="assets/images/mercury.png" alt="">
+                        <span>Mercury</span>
+                    </button>
+                    <button class="planet-tile" type="button" data-planet="venus" data-kind="rocky" aria-pressed="false">
+                        <img src="assets/images/venus.png" alt="">
+                        <span>Venus</span>
+                    </button>
+                    <button class="planet-tile is-selected" type="button" data-planet="earth" data-kind="rocky" aria-pressed="true">
+                        <img src="assets/images/earth.png" alt="">
+                        <span>Earth</span>
+                    </button>
+                    <button class="planet-tile" type="button" data-planet="mars" data-kind="rocky" aria-pressed="false">
+                        <img src="assets/images/mars.png" alt="">
+                        <span>Mars</span>
+                    </button>
+                    <button class="planet-tile" type="button" data-planet="jupiter" data-kind="giant" aria-pressed="false">
+                        <img src="assets/images/jupiter.png" alt="">
+                        <span>Jupiter</span>
+                    </button>
+                    <button class="planet-tile" type="button" data-planet="saturn" data-kind="giant" aria-pressed="false">
+                        <img src="assets/images/saturn.png" alt="">
+                        <span>Saturn</span>
+                    </button>
+                    <button class="planet-tile" type="button" data-planet="uranus" data-kind="ice" aria-pressed="false">
+                        <img src="assets/images/uranus.png" alt="">
+                        <span>Uranus</span>
+                    </button>
+                    <button class="planet-tile" type="button" data-planet="neptune" data-kind="ice" aria-pressed="false">
+                        <img src="assets/images/neptune.png" alt="">
+                        <span>Neptune</span>
+                    </button>
+                </div>
+            </div>
+
+            <article class="planet-feature" aria-labelledby="planet-name" aria-describedby="planet-summary" aria-live="polite">
+                <div class="planet-image-frame">
+                    <img id="planet-image" src="assets/images/earth.png" alt="Illustration of Earth with blue oceans, green land, and white cloud markings.">
+                </div>
+                <div class="planet-copy">
+                    <p class="kicker" id="planet-family">Rocky planet</p>
+                    <h2 id="planet-name">Earth</h2>
+                    <p id="planet-summary">Earth is our home world, with liquid water, a protective atmosphere, and the only life we currently know.</p>
+                    <dl class="detail-list">
+                        <div>
+                            <dt>Position</dt>
+                            <dd id="planet-position">Third from the Sun</dd>
+                        </div>
+                        <div>
+                            <dt>Memory clue</dt>
+                            <dd id="planet-clue">Blue oceans make Earth stand out.</dd>
+                        </div>
+                    </dl>
+                    <a class="button" href="mars.html">Open the Mars mission</a>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Big Planetarium prototype. Planet facts written for accessible learning.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
